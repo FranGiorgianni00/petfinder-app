@@ -1,0 +1,80 @@
+ <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Registro de Usuario</title>
+</head>
+<body>
+    <h1>Registro de Usuario</h1>
+    
+    <form id="registrationForm">
+        <input type="text" name="name" placeholder="Nombre" required />
+        <input type="email" name="email" placeholder="Email" required />
+        <input type="text" name="location" placeholder="Ubicación" required />
+        <input type="password" name="password" placeholder="Contraseña" required />
+        <button type="submit">Registrarse</button>
+    </form>
+
+    <div id="mascotas"></div> <!-- Aquí se mostrarán las mascotas -->
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const form = document.getElementById('registrationForm');
+
+        form.addEventListener('submit', async (event) => {
+          event.preventDefault();
+
+          const formData = new FormData(form);
+          const data = Object.fromEntries(formData.entries());
+
+          try {
+            const response = await fetch('/register', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(data),
+            });
+
+            if (response.ok) {
+              alert('Usuario registrado con éxito!');
+              cargarMascotas(); // Actualiza la lista de mascotas
+            } else {
+              alert('Error al registrar el usuario.');
+            }
+          } catch (error) {
+            console.error('Error:', error);
+            alert('Hubo un problema con la solicitud');
+          }
+        });
+
+        async function cargarMascotas() {
+          try {
+            const response = await fetch('/api/data');
+            const data = await response.json();
+            mostrarMascotas(data.pets);
+          } catch (error) {
+            console.error('Error al cargar las mascotas:', error);
+          }
+        }
+
+        function mostrarMascotas(mascotas) {
+          const contenedor = document.getElementById('mascotas');
+          contenedor.innerHTML = '';
+
+          mascotas.forEach(mascota => {
+            const mascotaDiv = document.createElement('div');
+            mascotaDiv.innerHTML = `
+              <h3>${mascota.name}</h3>
+              <img src="${mascota.imageUrl}" alt="${mascota.name}" style="max-width: 200px;" />
+              <p>Estado: ${mascota.status}</p>
+              <p>Ubicación: ${mascota.location}</p>
+            `;
+            contenedor.appendChild(mascotaDiv);
+          });
+        }
+
+        cargarMascotas(); // Carga inicial al abrir la página
+      });
+    </script>
+</body>
+</html>

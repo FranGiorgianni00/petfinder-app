@@ -1,0 +1,29 @@
+{
+  "pets": [
+    {
+      "name": "Firulais",
+      "status": "lost",
+      "location": "Parque",
+      "reporterId": "123"
+    },
+    {
+      "name": "Tevez",
+      "status": "lost",
+      "location": "calle 16",
+      "reporterId": "456"
+    },
+    {
+      "name": "Bruna",
+      "status": "found",
+      "location": "casa",
+      "reporterId": "789"
+    },
+    
+
+      { "name": "Juana",
+  "location": "Costa del Este",
+  "status": "found", 
+  "imageUrl": "uploads\\1767049344921.jpg"
+} ]
+}
+

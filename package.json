@@ -1,0 +1,22 @@
+{
+  "name": "petfinder",
+  "version": "1.0.0",
+  "description": "Webapp para reportar mascotas perdidas",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "body-parser": "^2.2.1",
+    "express": "^4.22.1",
+    "mongoose": "^7.8.8",
+    "multer": "^2.0.2",
+    "resend": "^6.6.0",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.1.7"
+  }
+}

@@ -1,0 +1,31 @@
+ <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reportar Mascota</title>
+</head>
+<body>
+    <h1>Reportar Mascota</h1>
+    <form id="reportForm">
+        <label for="email">Email:</label>
+        <input type="email" id="email" required><br>
+
+        <label for="nombreMascota">Nombre de la Mascota:</label>
+        <input type="text" id="nombreMascota" required><br>
+
+        <label for="estado">Estado:</label>
+        <select id="estado" required>
+            <option value="lost">Perdida</option>
+            <option value="found">Encontrada</option>
+        </select><br>
+
+        <label for="ubicacion">Ubicación:</label>
+        <input type="text" id="ubicacion" required><br>
+
+        <button type="submit">Reportar</button>
+    </form>
+
+    <script src="script.js"></script>
+</body>
+</html>
